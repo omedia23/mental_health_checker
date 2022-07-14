@@ -25,19 +25,27 @@ class TaskWidget extends StatelessWidget {
         ),
         Expanded(
           flex: 6,
-          child: InkWell(
-            onDoubleTap: () {
-              SystemNavigator.pop();
-            },
-            child: Align(
-              alignment: Alignment.bottomCenter,
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: GestureDetector(
+              onDoubleTap: () {
+                //SystemNavigator.pop();
+                SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+              },
               child: Container(
+                padding: const EdgeInsets.all(15),
                 height: 60,
                 width: double.infinity,
                 decoration: const BoxDecoration(
                   color: Colors.grey,
                 ),
-                child: const Text("Press twich to exit!"),
+                child: const Text(
+                  "Press twich to exit!",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
               ),
             ),
           ),
