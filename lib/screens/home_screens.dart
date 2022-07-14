@@ -17,18 +17,25 @@ class _HomeScreenState extends State<HomeScreen> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-              child: Text('Drawer Header'),
-              decoration: BoxDecoration(),
+            DrawerHeader(
+              decoration: const BoxDecoration(),
+              child: Image.network(
+                  'https://www.seekpng.com/png/detail/99-999303_clipart-freeuse-mental-clipart-brain-head-cartoon-brain.png'),
             ),
             ListTile(
-              title: Text('List 1'),
+              title: const Text('Get Profesional Help'),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              title: Text('List 1'),
+              title: const Text('Log Out'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Clear All Accounts'),
               onTap: () {
                 Navigator.pop(context);
               },
