@@ -1,60 +1,56 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class TaskWidget extends StatelessWidget {
-  const TaskWidget({Key? key}) : super(key: key);
+  TaskWidget({Key? key}) : super(key: key);
+
+  final List<Map> _taskList = [
+    {
+      "image":
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVMVhx1EQixMmhQyQAKG_3fBb0ozOf8KZy-GA2j1V4WLfhqEcYkJrbEE0Y6j6YCmxgs78&usqp=CAU",
+      "title": "Get Out! Meet a new people today",
+    },
+    {
+      "image":
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVMVhx1EQixMmhQyQAKG_3fBb0ozOf8KZy-GA2j1V4WLfhqEcYkJrbEE0Y6j6YCmxgs78&usqp=CAU",
+      "title": "Listen to your favourite tracks",
+    },
+    {
+      "image":
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVMVhx1EQixMmhQyQAKG_3fBb0ozOf8KZy-GA2j1V4WLfhqEcYkJrbEE0Y6j6YCmxgs78&usqp=CAU",
+      "title": "Get a job today!",
+    }
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: _taskList.length,
+      itemBuilder: (context, index) {
+        return GestureDetector(
+          onTap: () {},
           child: Card(
             child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const ListTile(
-                  title: Text("Ready to answare a few questions?"),
-                  subtitle: Text("It will only take a minute"),
-                  leading: Icon(Icons.message_outlined),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(onPressed: () {}, child: const Text("Yes!")),
-                    TextButton(onPressed: () {}, child: const Text("Not now!")),
-                  ],
+                Image.network(_taskList[index]["image"]),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    _taskList[index]["title"],
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
                 ),
               ],
             ),
           ),
-        ),
-        GestureDetector(
-          onDoubleTap: () {
-            //SystemNavigator.pop();
-            SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-          },
-          child: Container(
-            padding: const EdgeInsets.all(15),
-            height: 60,
-            width: double.infinity,
-            decoration: const BoxDecoration(
-              color: Colors.grey,
-            ),
-            child: const Text(
-              "Press twich to exit!",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-              ),
-            ),
-          ),
-        )
-      ],
+        );
+      },
     );
   }
 }
