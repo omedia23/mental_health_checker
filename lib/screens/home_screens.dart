@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:mental_health_checker/widgets/drawer.dart';
+import 'package:mental_health_checker/widgets/task_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -55,10 +56,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           tabs: _tabs,
         ),
       ),
-      body: TabBarView(controller: _tabController, children: [
-        Container(),
-        Container(),
-      ]),
+      body: TabBarView(
+        controller: _tabController,
+        children: [
+          TaskWidget(),
+          Container(),
+        ],
+      ),
     );
   }
 }
