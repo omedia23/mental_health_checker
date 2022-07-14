@@ -47,6 +47,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           style: TextStyle(fontSize: 18, color: Colors.white),
         ),
         bottom: TabBar(
+          indicator: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: Colors.black12,
+          ),
           controller: _tabController,
           tabs: _tabs,
         ),
