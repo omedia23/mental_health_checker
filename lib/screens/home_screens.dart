@@ -12,6 +12,37 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              child: Text('Drawer Header'),
+              decoration: BoxDecoration(),
+            ),
+            ListTile(
+              title: Text('List 1'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('List 1'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
+      appBar: AppBar(
+        backgroundColor: Colors.redAccent,
+        title: const Text(
+          'Your Companion',
+          style: TextStyle(fontSize: 18, color: Colors.white),
+        ),
+      ),
+    );
   }
 }
