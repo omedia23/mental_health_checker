@@ -10,42 +10,46 @@ class TaskWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const ListTile(
-          title: Text("Ready to answare a few questions?"),
-          subtitle: Text("It will only take a minute"),
-          leading: Icon(Icons.message_outlined),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            TextButton(onPressed: () {}, child: const Text("Yes!")),
-            TextButton(onPressed: () {}, child: const Text("Not now!")),
-          ],
-        ),
-        Expanded(
-          flex: 6,
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: GestureDetector(
-              onDoubleTap: () {
-                //SystemNavigator.pop();
-                SystemChannels.platform.invokeMethod('SystemNavigator.pop');
-              },
-              child: Container(
-                padding: const EdgeInsets.all(15),
-                height: 60,
-                width: double.infinity,
-                decoration: const BoxDecoration(
-                  color: Colors.grey,
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            child: Column(
+              children: [
+                const ListTile(
+                  title: Text("Ready to answare a few questions?"),
+                  subtitle: Text("It will only take a minute"),
+                  leading: Icon(Icons.message_outlined),
                 ),
-                child: const Text(
-                  "Press twich to exit!",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(onPressed: () {}, child: const Text("Yes!")),
+                    TextButton(onPressed: () {}, child: const Text("Not now!")),
+                  ],
                 ),
+              ],
+            ),
+          ),
+        ),
+        GestureDetector(
+          onDoubleTap: () {
+            //SystemNavigator.pop();
+            SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+          },
+          child: Container(
+            padding: const EdgeInsets.all(15),
+            height: 60,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              color: Colors.grey,
+            ),
+            child: const Text(
+              "Press twich to exit!",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
               ),
             ),
           ),
