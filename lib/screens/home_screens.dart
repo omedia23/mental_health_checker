@@ -10,7 +10,32 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+  final List<Tab> _tabs = [
+    const Tab(
+      child: Text('Tasks'),
+    ),
+    const Tab(
+      child: Text('Dashboard'),
+    )
+  ];
+
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _tabController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +46,15 @@ class _HomeScreenState extends State<HomeScreen> {
           'Your Companion',
           style: TextStyle(fontSize: 18, color: Colors.white),
         ),
+        bottom: TabBar(
+          controller: _tabController,
+          tabs: _tabs,
+        ),
       ),
+      body: TabBarView(controller: _tabController, children: [
+        Container(),
+        Container(),
+      ]),
     );
   }
 }
